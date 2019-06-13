@@ -1,11 +1,11 @@
 import csv to python
 import numpy as np 
-"
+''
 f=r'K:\GISElec_BusinessSupport\YiFan\Duplicate_sp\duplicate_sp.csv'
 d=','
 n=42
 input are file, delimiter, and column number
-"
+''
 #function to convert sp table to numpy array
 def csv_to_np(file,delim,n_col)
     with open(file, 'rb') as csvfile:
