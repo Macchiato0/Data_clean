@@ -1,1 +1,2 @@
-# Data_clean countains some notes and tips of data structure and data convertion method
+# Data_clean 
+ some notes and tips of data structure, data type, data conversion  
