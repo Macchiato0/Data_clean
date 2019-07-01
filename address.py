@@ -1,7 +1,7 @@
 @check_street
 def address_extract(t): #t is a string '........'
     match=re.search('\d\w+', t)
-    text=re.split("\s", t)
+    text=re.split("[\s,,,.,?,#,/]", t)
     if match:
         x=match.group() #find the digit part in the string as street number
         if len(x)<6:
@@ -62,7 +62,7 @@ for i in cursor:
     comment.append(i[6])
 
 for i in range(len(comment)):
-    if address_extract(comment[i]):
-        print address_extract(comment[i]),oid[i]
+    address_extract(comment[i])
+    print address_extract(comment[i]),oid[i]
         
 
