@@ -58,7 +58,14 @@ re.sub("\s", "9", text)
 """
 remove punctuatuion
 substituting(re.sub) all NON[alphanumeric characters(\w) and spaces(\s)] with empty string
-structure: [^arn]
+structure: [^arn] :Returns a match for any character EXCEPT a, r, and n
 """
 s = "string. With. Punctuation?"
 s = re.sub(r'[^\w\s]','',s)
+
+
+"""
+\w
+Returns a match where the string contains any word characters 
+(characters from a to Z, digits from 0-9, and the underscore _ character)
+"""
