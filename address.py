@@ -37,12 +37,13 @@ def p_decorate(func):
 
 def check_street(func): #s is the list generated from address_extract
     def func_wrapper(s):
-        list=func(s)
-        sps=" "
-        if list[-1] in street_kw:
-            return sps.join(list)
-        else:
-            return sps.join(list[:-1])
+        if func(s):
+            list=func(s) 
+            sps=" "
+            if list[-1] in street_kw:
+                return sps.join(list)
+            else:
+                return sps.join(list[:-1])
     return func_wrapper
 
 
@@ -51,6 +52,17 @@ def check_street(func): #s is the list generated from address_extract
 select the address ignor case
 SQL:
 SELECT * FROM myTable WHERE UPPER(field) LIKE UPPER('%string2%')
-""""
 
+cursor=arcpy.da.SearchCursor("AuditArea selection selection",["*"])
+
+oid,comment=[],[]
+
+for i in cursor:
+    oid.append(i[0])
+    comment.append(i[6])
+
+for i in range(len(comment)):
+    if address_extract(comment[i]):
+        print address_extract(comment[i]),oid[i]
+        
 
