@@ -7,7 +7,8 @@ def address_extract(t): #t is a string '........'
             position=text.index(x)    
             if position<(len(text)-2):
                 street=text[position:position+3]
-                return street
+                return [re.sub(r'[^\w\s]','',s) for s in street]
+               
     
 
     
