@@ -55,6 +55,10 @@ re.split("\s", text)
 re.sub("\s", "9", text)
 #return text with its all spaces "\s" substituded by 9
 
-
-
-
+"""
+remove punctuatuion
+substituting(re.sub) all NON[alphanumeric characters(\w) and spaces(\s)] with empty string
+structure: [^arn]
+"""
+s = "string. With. Punctuation?"
+s = re.sub(r'[^\w\s]','',s)
