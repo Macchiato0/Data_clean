@@ -53,16 +53,39 @@ select the address ignor case
 SQL:
 SELECT * FROM myTable WHERE UPPER(field) LIKE UPPER('%string2%')
 
-cursor=arcpy.da.SearchCursor("AuditArea selection selection",["*"])
+cursor=arcpy.da.SearchCursor("AuditArea selection",["OID@","COMMENTS"])
 
-oid,comment=[],[]
+oids,comments=[],[]
 
 for i in cursor:
-    oid.append(i[0])
-    comment.append(i[6])
+    oids.append(i[0])
+    comments.append(i[1])
 
-for i in range(len(comment)):
-    address_extract(comment[i])
-    print address_extract(comment[i]),oid[i]
-        
+comments_oids=[]
+for i in range(len(comments)):
+    x=comments[i].encode('ascii', 'ignore').decode('ascii')
+    t=address_extract(x)
+    if t is not None:
+        comments_oids.append([oids[i],t])
 
+work_list=[]
+for i in comments_oids:
+    cursor=arcpy.da.SearchCursor("ELECDIST.ServiceAddress",["SERVICEPOINTOBJECTID"],"STREET like upper('%{}%')".format(i[1]))
+    l=[j[0] for j in cursor]
+    if len(l)==1:
+        work_list.append(i[0],i[1],l[0])
+
+[sp_oid,sp_street,polygon_oid]
+
+
+work_list_distance=[]
+
+for i in work_list:
+    cursor1=arcpy.da.SearchCursor("AuditArea selection",["SHAPE@"],"OBJECTID={}".format(i[0]))
+    cursor2=arcpy.da.SearchCursor(r"Customers & Transformers\Service Point",["SHAPE@"],"OBJECTID={}".format(i[2]))
+    for row1 in cursor1:
+        plg=row1[0]
+    for row2 in cursor2:
+        pt=row2[0]
+    distance=plg.distanceTo(pt)
+    work_list_distance.append([i,distance])
