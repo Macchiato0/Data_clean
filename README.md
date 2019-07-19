@@ -1,2 +1,2 @@
-# Data_clean 
- some notes and tips of data structure, data type, data conversion  
+# python tips and notes
+ some notes and tips of data structure, type, conversion, algorithm, and common pythonic tricks.  
