@@ -34,3 +34,8 @@ print(scores.pop('Loi',95))
 # clean the dictionary
 scores.clear()
 print(scores)
+
+#zip 2 lists to dictionary
+keys = ['a', 'b', 'c']
+values = [1, 2, 3]
+dictionary = dict(zip(keys, values))
