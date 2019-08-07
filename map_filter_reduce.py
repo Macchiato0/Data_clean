@@ -1,3 +1,4 @@
+#map
 items = [1, 2, 3, 4, 5]
 squared = list(map(lambda x: x**2, items))
 
@@ -21,7 +22,7 @@ for i in range(5):
 
 
 
-filter creates a list of elements for which a function returns true. 
+#filter creates a list of elements for which a function returns true. 
 
 number_list = range(-5, 5)
 less_than_zero = list(filter(lambda x: x < 0, number_list))
@@ -30,7 +31,7 @@ print(less_than_zero)
 # Output: [-5, -4, -3, -2, -1]
 
 
-Reduce applies a rolling computation to sequential pairs of values in a list.
+#Reduce applies a rolling computation to sequential pairs of values in a list.
 
 product = 1
 list = [1, 2, 3, 4]
@@ -44,5 +45,5 @@ product = reduce((lambda x, y: x * y), [1, 2, 3, 4])
 
 # Output: 24
 
-Reference:
-https://book.pythontips.com/en/latest/map_filter.html
+#Reference:
+#https://book.pythontips.com/en/latest/map_filter.html
